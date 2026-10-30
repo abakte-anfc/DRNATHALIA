@@ -1,0 +1,2 @@
+﻿import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'./tests/browser',workers:1,use:{baseURL:'http://127.0.0.1:5184',launchOptions:process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'}},webServer:{command:'npm.cmd run dev -- --port 5184 --strictPort',url:'http://127.0.0.1:5184',reuseExistingServer:false},reporter:'list'});

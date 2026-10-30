@@ -1,0 +1,6 @@
+﻿import {defineConfig} from 'vite';
+import react from '@vitejs/plugin-react';
+import {siteConfig as c} from './src/site.config.ts';
+import {localized} from './src/language.mjs';
+const escape=(value:string)=>value.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+export default defineConfig({plugins:[react(),{name:'client-metadata',transformIndexHtml(html){const lang=c.languages.default;const title=escape(localized(c.metadata.title,lang,lang));const description=escape(localized(c.metadata.description,lang,lang));html=html.replace(/<html lang="[^"]*"/,`<html lang="${lang}"`).replace(/<title>.*?<\/title>/,`<title>${title}</title>`);for(const [selector,value] of [['name="description"',description],['property="og:title"',title],['property="og:description"',description],['name="robots"',c.metadata.indexable?'index,follow':'noindex,nofollow'],['name="theme-color"',escape(c.visual.colors.surface)],['property="og:image"',escape(c.metadata.siteUrl?new URL(c.metadata.shareImage,c.metadata.siteUrl).href:c.metadata.shareImage)]])html=html.replace(new RegExp(`(<meta ${selector} content=")[^"]*`),'$1'+value);if(c.metadata.siteUrl)html=html.replace('</head>',`<link rel="canonical" href="${escape(c.metadata.siteUrl)}"/></head>`);return html}}],server:{host:'127.0.0.1'}});
