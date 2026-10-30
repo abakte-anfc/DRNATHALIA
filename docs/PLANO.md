@@ -1,14 +1,13 @@
-﻿# Plano de implementação
+﻿# Implementação da proposta
 
-Especificação: solicitação do usuário de 30/10/2026.
-Stack preservada: React, TypeScript, Vite e animações CSS existentes.
-Decisão: cópia seletiva em pasta irmã, sem histórico, mídias pessoais, referências, dependências, build ou segredos. O original permanece recuperável integralmente na pasta original e no Git.
+Briefing: solicitação de 30/10/2026 para a Dra. Nathália Azi.
 
-- [x] Configuração tipada única para identidade, contatos, tema, idiomas, conteúdo e mídias; regras de fallback e seções com testes de comportamento.
-- [x] Adaptar componentes existentes e navegação para conteúdo opcional, comprimentos variáveis e ausência de contato; conservar layout e interações.
-- [x] Remover materiais pessoais da base por seleção de arquivos; criar arte local abstrata e metadados neutros.
-- [x] Documentar personalização e uso independente como template.
-- [x] Executar testes unitários, build, testes de navegador desktop/mobile, auditoria de arquivos e comparar estado original.
+A análise encontrou uma base React/TypeScript/Vite, conteúdo configurável, resolução de idiomas, navegação móvel, FAQ e animações de entrada por observador. Não havia mídias da médica inicialmente; depois foi fornecido o retrato em IMG/.
 
-Riscos a verificar: listas vazias, categoria única, galeria de um ou vários itens, idioma único, tradução parcial, armazenamento indisponível e nenhum contato válido.
-Nenhuma publicação, push, criação de remoto ou branch por cliente será executada.
+Implementado: identidade, dados e conteúdo do briefing, nova paleta, fotografia otimizada, marca textual, áreas de cuidado, instruções de agendamento, três unidades, FAQ administrativa, encerramento e rodapé. Sem vídeos ou depoimentos por ausência de materiais. AnimatedContent adapta a entrada existente com conteúdo sempre visível e respeito à redução de movimento.
+
+A estratégia mantém a stack e os utilitários de idioma, retira a galeria sem conteúdo e direciona todos os CTAs gerais à escolha da unidade. Cada card mantém seu destino exato. HCA segue pendente de confirmação, sem correção automática.
+
+Verificações: TypeScript e build Vite, testes unitários de idioma, navegador em 360/390/768/1440 px, links, menu, FAQ, noindex, ausência de overflow e falha do observador. Capturas locais em .qa/.
+
+Sem publicação, push ou mensagens externas. Pendências em PENDENCIAS.md.
